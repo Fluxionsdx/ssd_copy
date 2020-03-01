@@ -746,7 +746,8 @@ class BatchGenerator:
                  subtract_mean=None,
                  divide_by_stddev=None,
                  swap_channels=False,
-                 keep_images_without_gt=False):
+                 keep_images_without_gt=False,
+                 data_type = None):
         '''
         Generate batches of samples and corresponding labels indefinitely from
         lists of filenames and labels.
@@ -939,7 +940,10 @@ class BatchGenerator:
             # Load the images for this batch.
             for filename in batch_filenames:
                 with Image.open(filename) as img:
-                    batch_X.append(np.array(img))
+                    np_image = np.array(img)
+                    if(data_type == "sonar"):
+                        np_image = np_image/255
+                    batch_X.append(np_image)
 
             # Get the labels for this batch (if there are any).
             if not (self.labels is None):
