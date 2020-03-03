@@ -105,28 +105,28 @@ def train(args):
   val_annotations_dirs = []  
   val_filenames = []
   if(data_type == "sonar"):
-  	if(sonar_range == "range5000"):
-  		base_im_path = "/projects/mines/working_mount/processed_sonar/new_data"
-  		base_an_path = "/projects/mines/Josh/mines_ground_truth/sonar/range5000"
-  		base_filenames_path ="/projects/mines/Josh/mines_file_names"
-		#base_im_path = "/Users/Josh/processed_sonar"
-  		#base_an_path = "/Users/Josh/mines_ground_truth/sonar/range5000"
-  		#base_filenames_path = "/Users/Josh/mines_file_names"
-  		all_datasets = datasets_train + datasets_val
-		for ds in all_datasets:
-			#im_ds_path = "{}/k-8".format(ds)
-			im_ds_path = "{}/range5000/k-8".format(ds)
-			im_path = "{}/{}".format(base_im_path, im_ds_path)
-			an_path = "{}/{}".format(base_an_path, ds)
-			file_name_path = "{}/sonar_ds_{}_list.txt".format(base_filenames_path, ds)
-			if ds in datasets_train:
-  				train_images_dirs.append(im_path)  				
-  				train_annotations_dirs.append(an_path)
-  				train_filenames.append(file_name_path)
-  			else:
-  				val_images_dirs.append(im_path)  				
-  				val_annotations_dirs.append(an_path)
-  				val_filenames.append(file_name_path)
+    if(sonar_range == "range5000"):
+      base_im_path = "/projects/mines/working_mount/processed_sonar/new_data"
+      base_an_path = "/projects/mines/Josh/mines_ground_truth/sonar/range5000"
+      base_filenames_path ="/projects/mines/Josh/mines_file_names"
+      #base_im_path = "/Users/Josh/processed_sonar"
+      #base_an_path = "/Users/Josh/mines_ground_truth/sonar/range5000"
+      #base_filenames_path = "/Users/Josh/mines_file_names"
+      all_datasets = datasets_train + datasets_val
+      for ds in all_datasets:
+      #im_ds_path = "{}/k-8".format(ds)
+        im_ds_path = "{}/range5000/k-8".format(ds)
+        im_path = "{}/{}".format(base_im_path, im_ds_path)
+        an_path = "{}/{}".format(base_an_path, ds)
+        file_name_path = "{}/sonar_ds_{}_list.txt".format(base_filenames_path, ds)
+        if ds in datasets_train:
+          train_images_dirs.append(im_path)  				
+          train_annotations_dirs.append(an_path)
+          train_filenames.append(file_name_path)
+        else:
+          val_images_dirs.append(im_path)  				
+          val_annotations_dirs.append(an_path)
+          val_filenames.append(file_name_path)
 
 
   # The XML parser needs to now what object class names to look for and in which order to map them to integers.
