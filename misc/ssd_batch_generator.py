@@ -370,7 +370,8 @@ class BatchGenerator:
                   include_classes = 'all',
                   exclude_truncated=False,
                   exclude_difficult=False,
-                  ret=False):
+                  ret=False,
+                  data_type=None):
         '''
         This is an XML parser for the Pascal VOC datasets. It might be applicable to other datasets with minor changes to
         the code, but in its current form it expects the data format and XML tags of the Pascal VOC datasets.
@@ -426,8 +427,10 @@ class BatchGenerator:
             # Loop over all images in this dataset.
             #for image_id in image_ids:
             for image_id in tqdm(image_ids, desc=os.path.basename(image_set_filename)):
-
-                filename = '{}'.format(image_id) + '.jpg'
+                if(data_type == "sonar"):
+                    filename = '{}'.format(image_id) + '.png'
+                else:
+                    filename = '{}'.format(image_id) + '.jpg'
                 self.filenames.append(os.path.join(images_dir, filename))
 
                 if not annotations_dir is None:
@@ -559,7 +562,7 @@ class BatchGenerator:
             # print image_id
             img = cv2.imread(image_id)
             if img is None:
-                print image_id.strip()
+                print(image_id.strip())
                 continue
             W, H = img.shape[1], img.shape[0]
 

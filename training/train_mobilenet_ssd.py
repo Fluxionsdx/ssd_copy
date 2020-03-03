@@ -182,9 +182,6 @@ def train(args):
                                            flip=0.5,
                                            translate=False,
                                            scale=False,
-                                           max_crop_and_resize=(img_height, img_width, 1, 3),
-                                           # This one is important because the Pascal VOC images vary in size
-                                           random_pad_and_resize=(img_height, img_width, 1, 3, 0.5),
                                            # This one is important because the Pascal VOC images vary in size
                                            random_crop=False,
                                            crop=False,
@@ -204,9 +201,6 @@ def train(args):
                                            flip=0.5,
                                            translate=False,
                                            scale=False,
-                                           max_crop_and_resize=(img_height, img_width, 1, 3),
-                                           # This one is important because the Pascal VOC images vary in size
-                                           random_pad_and_resize=(img_height, img_width, 1, 3, 0.5),
                                            # This one is important because the Pascal VOC images vary in size
                                            random_crop=False,
                                            crop=False,
