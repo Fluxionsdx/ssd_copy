@@ -1,5 +1,6 @@
 import sys
-sys.path.append("/Users/Josh/Mobilenet-ssd-keras")
+#sys.path.append("/Users/Josh/Mobilenet-ssd-keras")
+sys.path.append("/projects/mines/Josh/ssd_copy")
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler, EarlyStopping, ReduceLROnPlateau, TensorBoard
 from keras import backend as K
@@ -105,18 +106,20 @@ def train(args):
   val_filenames = []
   if(data_type == "sonar"):
   	if(sonar_range == "range5000"):
-  		#base_img_path = "/projects/mines/working_mount/processed_sonar/new_data"
-  		#base_an_path = "/projects/mines/Josh/mines_ground_truth/sonar/range5000"
-  		base_im_path = "/Users/Josh/processed_sonar"
-  		base_an_path = "/Users/Josh/mines_ground_truth/sonar/range5000"
-  		base_filenames_path = "/Users/Josh/mines_file_names"
+  		base_im_path = "/projects/mines/working_mount/processed_sonar/new_data"
+  		base_an_path = "/projects/mines/Josh/mines_ground_truth/sonar/range5000"
+  		base_filenames_path ="/projects/mines/Josh/mines_file_names"
+		#base_im_path = "/Users/Josh/processed_sonar"
+  		#base_an_path = "/Users/Josh/mines_ground_truth/sonar/range5000"
+  		#base_filenames_path = "/Users/Josh/mines_file_names"
   		all_datasets = datasets_train + datasets_val
-  		for ds in all_datasets:
-  			im_ds_path = "{}/k-8".format(ds)
-  			im_path = "{}/{}".format(base_im_path, im_ds_path)
-  			an_path = "{}/{}".format(base_an_path, ds)
-  			file_name_path = "{}/sonar_ds_{}_list.txt".format(base_filenames_path, ds)
-  			if ds in datasets_train:
+		for ds in all_datasets:
+			#im_ds_path = "{}/k-8".format(ds)
+			im_ds_path = "{}/range5000/k-8".format(ds)
+			im_path = "{}/{}".format(base_im_path, im_ds_path)
+			an_path = "{}/{}".format(base_an_path, ds)
+			file_name_path = "{}/sonar_ds_{}_list.txt".format(base_filenames_path, ds)
+			if ds in datasets_train:
   				train_images_dirs.append(im_path)  				
   				train_annotations_dirs.append(an_path)
   				train_filenames.append(file_name_path)
