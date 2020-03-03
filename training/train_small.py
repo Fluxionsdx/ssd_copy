@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 import tensorflow as tf
 
 #from models.ssd_mobilenet import ssd_300
-from models.small_ssd import small_ssd
+from this_models.small_ssd import small_ssd
 from misc.keras_ssd_loss import SSDLoss, FocalLoss, weightedSSDLoss, weightedFocalLoss
 from misc.keras_layer_AnchorBoxes import AnchorBoxes
 from misc.keras_layer_L2Normalization import L2Normalization
